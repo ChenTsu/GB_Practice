@@ -1,0 +1,33 @@
+body {
+    width:1024px;
+    margin: 20px auto;
+}
+
+.navigatelink {
+    font-size: 0.7em;
+}
+
+h1 {    }
+h2 {    }
+h3 {    }
+
+.images{    }
+
+.artheadline {  }
+.arttext {  }
+
+.outlink {
+    text-align: right;
+}
+
+#commentsid {
+    color: saddlebrown;
+}
+.comments{
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.copy {
+    text-align: center;
+}

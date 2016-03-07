@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Страница регистрации</title>
+    <link href="../css.css" rel="stylesheet">
+</head>
+<body>
+    <div class="navigatelink"><a href="../index.html">Главная</a> </div>
+
+    <ul>
+        <li><a href="../articles/articles.html">Статьи</a></li>
+        <li><a href="../catalog/catalog.html">Каталог товаров</a></li>
+        <li><a href="../gallery/gallery.html">Галлерея изображений</a></li>
+        <li><a href="../registration/registration.html">Регистрация</a></li>
+        <li><a href="../contacts/contacts.html">Контакты</a></li>
+    </ul>
+
+    <div>
+        <form action="" method="post">
+            <p>Пожалуйста, заполните форму регистрации</p>
+            <label>Ваш e-mail <input type="email" name="email" size="30" value="examle@mail.net"></label><br>
+            <label>Пароль <input type="password" name="userpassword" size="30"></label><br>
+            <label>Ваше имя <input type="text" name="username" size="20" value=""></label><br>
+            <label>Фамилия <input type="text" name="usersecondname" size="20" value=""></label><br>
+            <label>Отчество <input type="text" name="userlastname" size="20" value=""></label><br>
+            <label>Ваше фото <input type="file" name="userfoto" size="30" value=""></label><br>
+            <label>Сайт <input type="url" name="usersite" size="50" value="http://"></label><br>
+            <label>Укажите пол: Мужской <input type="radio" name="usersex" ></label> <label> Женский <input type="radio" name="usersex"> </label><br>
+            <label>Укажите дату вашего рождения <input type="date" name="userbirthday" ></label><br>
+            <label>Физическое лицо <input type="radio" name="usertype"></label> &nbsp;<label> Юридическое лицо <input type="radio" name="usertype"></label>
+            <p>Причина регистрации: <br>
+                <label>Посмотреть подробные сведения о товаре <input type="checkbox" name="moreinfo">  </label><br>
+                <label>Получить дополнительное обслуживание <input type="checkbox" name="moreservice"></label><br>
+                <label>Оформить партнёрскую программу <input type="checkbox" name="partnership"> </label>
+            </p>
+            <label>Немного о себе <br><textarea name="userabout" cols="80" rows="10"></textarea></label> <br>
+            <input type="submit" value="Зарегистрироваться">
+            <input type="reset" value="Очистить форму">
+
+        </form>
+    </div>
+    <hr>
+    <p class="copy">&copy;Ян Вайдакович</p>
+</body>
+</html>
