@@ -1,0 +1,85 @@
+body {
+    width:1024px;
+    margin: 20px auto;
+    background: /*#f7f6ff*/ url("gallery/maslenitsa_100h.jpg") no-repeat top right;
+}
+
+.navigatelink {
+    font-size: 0.7em;
+}
+
+.mainmenu {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    background-color: #e4f0e5;
+    width: 250px;
+}
+.mainmenu  a{
+    font-family: "Arial Black",sans-serif;
+    color: #2080ee;
+    font-weight: bold;
+    font-size: large;
+    text-decoration: none;
+}
+
+h1 {    }
+h2 {    }
+h3 {    }
+
+.images{    }
+
+.artheadlink {
+    font-family:  "Comic Sans MS",sans-serif;
+    font-size: 20px;
+    color: #0a0;
+    text-decoration: none;
+    border-bottom: dashed;
+}
+.artcommentslink {
+    /*display: inline-block;*/
+    margin-left: 700px;
+    color: #9ca990;
+    /*text-indent: 800px;*/
+}
+
+.artshort {
+    background-color: blanchedalmond;
+}
+.artmore {}
+
+.artmore:hover {
+    text-decoration: none;
+    color: yellowgreen;
+}
+
+.artheadline {
+    text-align: center;
+}
+.arttext {  }
+.arttext:first-letter {
+    font-family: "Berlin Sans FB", sans-serif;
+    color: red;
+    font-size: 1.5em;
+}
+
+.outlink {
+    text-align: right;
+}
+
+#commentsid {
+    color: saddlebrown;
+}
+.comments{
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.catalog {}
+.catalog > li{
+    list-style: image()
+}
+
+.copy {
+    text-align: center;
+}
