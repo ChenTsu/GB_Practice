@@ -76,10 +76,29 @@ h3 {    }
 }
 
 .catalog {}
-.catalog > li{
-    list-style: image()
+.catalog li {
+    font-size: large;
+}
+.catalog li:first-child{
+    list-style: url("catalog/icons/xolod.jpg");
+}
+.catalog li:nth-child(2){
+    list-style-image: url("catalog/icons/byt.jpg");
+}
+.catalog li:nth-child(3) {
+    list-style-image: url("catalog/icons/divan.jpg");
 }
 
+.byttech li{ /*хотел сделать картинки для каждого пункта, но столько цсс писать влом*/
+    list-style-image: url("catalog/icons/micro.jpg");
+}
+
+.bythim li {
+    list-style-image: url("catalog/icons/chist.jpg");
+}
+.meb li {
+    list-style-image: url("catalog/icons/kreslo.jpg");
+}
 .copy {
     text-align: center;
 }

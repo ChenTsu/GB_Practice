@@ -1,0 +1,164 @@
+/**********************************************************************************************************************/
+body {
+    /*font-size: 10px;*/
+}
+
+/**********************************************************************************************************************/
+.container1 {
+    width: 200px;
+    height: 200px;
+    background-color: aquamarine;
+    /* странно, когда этот контейнер inline-block, то container2 переносится на следуюющую строку,
+     но сохраняет отступ слева, буд-то container1 тоже на 2 строке */
+    display: inline-block;
+    /*float: left;*/
+    position: relative;
+}
+
+/*.container1 div {
+    display: inline-block;
+}*/
+
+/*  если мы не меняем стандартное поведение
+    блоки занимают всю "строку" и располагаются один под другим.
+    position: relative; + отступы заставляют блоки
+    смещаться относительно того места куда они должны встать без отступов   */
+.green {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    position: relative;
+    /*display: inline-block;*/
+}
+.white {
+    width: 100px;
+    height: 100px;
+    background-color: antiquewhite;
+    position: relative;
+    left: 100px;
+    top: -100px;
+    /*display: inline-block;*/
+}
+.black {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    color: dimgray;
+    position: relative;
+    /*left: 100px;*/
+    top:-100px;
+    /*display: inline-block;*/
+}
+.brown {
+    width: 100px;
+    height: 100px;
+    background-color: brown;
+    position: relative;
+    left: 100px;
+    top: -200px;
+    /*display: inline-block;*/
+}
+/**********************************************************************************************************************/
+
+/* от паддинга изменяется размер блока, хотя его должно хватать чтоб поместился красный!!*/
+.container2 {
+    width: 550px;   /*уменьшаем на 50px с учётом паддинга*/
+    height: 150px;  /*уменьшаем на 50px с учётом паддинга*/
+    background-color: lightgrey;
+    padding:25px;
+    display: inline-block;
+    margin-left: 30px;
+    /*position: relative;*/
+    /*top: -250px;*/
+}
+.red {
+    /*margin: 0;*/
+    width: 550px;
+    height: 150px;
+    background-color: red;
+    display: inline-block;
+}
+
+.blue {
+    position: absolute;
+    z-index: -1;
+    width: 150px;
+    /*height: 150px;*/
+    height: 90px; /* 150px.height - 60px.padding */
+    text-align: end;
+    vertical-align: middle; /* не срабатывает на текст в диве!!! */
+    padding-top: 60px;      /* поэтому используем паддинг чтоб сдвинуть текст */
+    /*text-height: 150px;*/ /*  а это тоже не работает для сдвига текста*/
+    color: #00aa00;
+    background-color: blue;
+    left: 120px;
+    top: 230px;
+
+}
+/*  почему-то срабатывает только .blue:last-child,   :fitst-child or :nth-child or :first-of-type от класса не работают ((   */
+/*.blue:first-of-type{*/
+.blue+.blue {
+    z-index: 2;
+    left: 300px;
+}
+/*  третий(последний) .blue тоже попадает под правило .blue+.blue поэтому надо переназначить з-индекс*/
+/*.blue:last-child {*/
+/*  получается псевдоклассы дочерних элементов работают только с div(с тегами),
+    хотя и назначаются через селекторы классов. (или я совсем что-то не понимаю)
+    поэтому делаем дальше изврат,*/
+.blue+.blue+.blue {
+    left: 495px;
+    z-index: -1;
+}
+
+/**********************************************************************************************************************/
+
+.emptyrow {
+    margin: 100px auto; /* без контента в блоке отступы схлопываются в единый*/
+    font-size: 0;       /* но блок то должен быть пустым, пэтому размер текста в нуль*/
+    color: transparent; /* и цвет текста на всякий случай прозрачный */
+                        /* и приходится делать большой отступ, т.к. размеры "абсолютных" блоков не учитываются для других */
+}
+
+.menu { /* почему-то при изменении масштаба страницы появляются отступы между блоками и рамкой справа, и между блоками и нижней рамкой*/
+    border: 2px solid darkblue;
+    width: 780px;
+    height: 160px;
+    margin: 0 auto;
+    padding: 0;
+    font-size: 0;   /*  обнуляем размер шрифта в меню чтоб убрать отступы между inline-block
+                        теперь блоки стоят впритык, и можно поправить ширину меню*/
+}
+.linkcontainer {
+    height: 134px;
+    display: inline-block;
+    border: 3px solid darkcyan;
+    margin: 0;
+    padding-top: 20px;
+    background-color: firebrick;
+}
+.linkcontainer:hover {
+    border: 3px dashed lightskyblue;
+    background-color: darkorange;
+}
+.linkcontainer a{
+    display: block;
+    width: 100%;
+    height: 40px;
+    /*height: 135px;*/
+    /*margin: 10px auto;*/
+    /*padding-top: 20px;*/
+    /*vertical-align: middle;*/ /*всё равно не работает*/
+
+    text-align: center;
+    font-size: medium; /*возвращаем размер шрифта чтоб ссылки были видны*/
+}
+.linkcontainer a:hover {
+
+}
+.linkcontainer img {
+    /*margin: 20px 0 0;*/
+    top: 20px;
+    display: block;
+    position: relative;
+}

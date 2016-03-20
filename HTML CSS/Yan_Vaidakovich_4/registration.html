@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма регистрации в таблице</title>
+    <link rel="stylesheet" href="tables.css">
+</head>
+<body>
+    <div class="mainmenu"><a href="index.html" >Главная</a></div>
+
+    <div>
+        <form action="" method="post">
+            <p>Пожалуйста, заполните форму регистрации</p>
+
+            <table class="tableform">
+                <tr>
+                    <td><label for="useremail">E-mail</label></td>
+                    <td><input type="email" id="useremail" placeholder="example@company.mail" required></td>
+                </tr>
+                <tr>
+                    <td><label for="username">Имя</label></td>
+                    <td><input type="text" id="username" required></td>
+                </tr>
+                <tr>
+                    <td><label for="usersecname">Фамилия</label></td>
+                    <td><input type="text" id="usersecname" required></td>
+                </tr>
+                <tr>
+                    <td><label for="userlastname" >Отчество</label></td>
+                    <td><input type="text" id="userlastname"></td>
+                </tr>
+                <tr>
+                    <td><label for="userfoto">Foto</label></td>
+                    <td><input type="file" id="userfoto"></td>
+                </tr>
+                <tr>
+                    <td><label for="usersite">Сайт</label></td>
+                    <td><input type="text" id="usersite" value="http://"></td>
+                </tr>
+                <tr>
+                    <td>Укажите пол: </td>
+                    <td><label><input type="radio" name="usersex" id="usersex"> Мужской</label> <label><input type="radio" name="usersex"> Женский</label></td>
+                </tr>
+                <tr>
+                    <td><label for="userbirthday">Дата рождения</label></td>
+                    <td><input type="date" id="userbirthday"></td>
+                </tr>
+                <tr>
+                    <td class="userabout"><label for="userabout" >Немного о себе</label></td>
+                    <td><textarea name="userabout" id="userabout" cols="25" rows="10"></textarea></td>
+                </tr>
+                <tr>
+                    <td><input type="reset" id="reset" value="Очистить форму"> </td>
+                    <td><input type="submit" id="apply" value="Зарегистрироваться"></td>
+                </tr>
+
+            </table>
+
+        </form>
+    </div>
+
+    <hr>
+    <p class="copy">&copy;Ян Вайдакович</p>
+
+</body>
+</html>

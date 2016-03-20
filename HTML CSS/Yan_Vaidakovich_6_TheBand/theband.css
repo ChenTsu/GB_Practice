@@ -1,0 +1,97 @@
+@font-face {
+    font-family: "Lora";
+	src: url("fonts/Lora-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Lora";
+	src: url("fonts/Lora-Italic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: "Lora";
+	src: url("fonts/Lora-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Oswald";
+	src: url("fonts/Oswald-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}@font-face {
+    font-family: "Oswald";
+	src: url("fonts/Oswald-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}@font-face {
+    font-family: "Oswald";
+	src: url("fonts/Oswald-Light.ttf") format("truetype");
+    font-weight: lighter;
+    font-style: normal;
+}
+
+.wrap {
+    width: 1900px;
+    height: 4820px;
+    margin: 0 auto;
+    position: absolute;
+}
+.header {
+    width: 1900px;
+    height: 924px;/* -40px padding*/
+    background: #ffffff url("img/Guitar%20Photo.png") no-repeat;
+    padding-top: 40px;
+}
+.menu {
+    width: 443px;
+    height: 34px;
+    margin-left: 205px;
+    margin-top: 40px; /* +padding.header = отступ для меню*/
+}
+.menuItems {
+    margin-right: 10px;
+    vertical-align: text-top;
+}
+.menuItems a{
+    display: inline-block;
+}
+.menuItems .ellipse {
+    border-radius: 50%;
+    background-color: #826860;
+    width: 6px;
+    height: 6px;
+    display: inline-block;
+}
+.backgroundWords {
+    width: 377px;
+    height: 549px;
+    background-image: url("img/Background%20words.png");
+    position: relative;
+    top: 191px;
+    left: 1256px;
+    z-index: 2;
+}
+.headerTitle {
+    width: 387px;
+    height: 197px;
+    position: relative;
+    top: 381px;
+    left: 1225px;
+}
+.headerTitle .white{
+	font-family: "Oswald";
+	color: #e4dddb;
+	font-size: 100px; /* Приближение из-за подстановки шрифтов */
+	font-weight: 700;
+	line-height: 78px; /* Приближение из-за подстановки шрифтов */
+	text-align: left;
+}
+
+.about {
+	width: 1900px;
+	height: 1068px;
+	top: -103px;
+}

@@ -1,0 +1,80 @@
+.wrap {
+    width: 780px;
+    height: 670px;
+    background-color: #D5D5D5;
+    margin: 0 auto;
+    position: relative; /*чтобы внутренние блоки не выходили за этот при абсолютном позиционировании*/
+}
+.siteShadowLeft, .siteShadowRight {
+    width: 5px;
+    height: 750px;
+    position: absolute;
+    background-color: #bbbbbb;
+}
+.siteShadowLeft {}
+.siteShadowRight {
+    right: 0;
+}
+
+
+.header {
+    height: 350px;
+}
+.headerLine {
+    height: 26px;
+    background-color: #565656;
+}
+.headerBG {
+    height: 313px;
+    background-color: #fff;
+}
+.headerLogo {}
+.headerBigLogo {}
+.mainMenu {}
+
+.content {
+    background-color: #919191;
+    /*width: 482px;*/
+    height: 342px;
+}
+.news {
+    margin-left: 26px;
+    background-color: #ABABAB;
+    width: 233px;
+    height: 314px;
+    float: left;
+}
+.hello {
+    margin-left: 7px;
+    background-color: #fff;
+    width: 482px;
+    height: 169px;
+    float: left;
+}
+.services {
+    margin-left: 7px;
+    margin-top: 11px;
+    background-color: #BDBDBD;
+    width: 482px;
+    height: 118px;
+    float: left;
+}
+
+.footer {
+    width: 780px;
+    margin: 0 auto;
+}
+.footerMargin {
+    height: 5px;
+    /*background-color: #c3c3c3;*/
+    background-color: #f00;
+}
+.footerContent {
+    background-color: #919191;
+    height: 59px;
+}
+.clearfix   :after{
+    content:'';
+    display:table;
+    clear:both;
+}

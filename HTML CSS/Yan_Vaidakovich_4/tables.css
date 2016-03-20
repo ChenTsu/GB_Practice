@@ -1,0 +1,70 @@
+
+.mainmenu{}
+
+.table1{
+    margin: 20px auto;
+    width: 50%;
+    border: 2px solid #a52a2a;
+
+}
+.table1 td,.table1 th{
+    border: 1px solid rebeccapurple;
+}
+
+
+
+.table2{
+    margin: 10px auto;
+    width: 100%;
+    border: 3px solid darkblue;
+    border-collapse: collapse;
+}
+.table2 td, .table2 th {
+    border: 1px solid mediumpurple;
+}
+.table2 th:first-child {
+    width: 70%;
+}
+.table2 tr td:first-child{ /*first column cells*/
+    width: 30%;
+}
+.bigcell {
+    height: 250px;
+}
+
+.intable{
+    border: 1px solid darkslategray;
+    border-collapse: collapse;
+    width: 90%;
+    height: 80%;
+    /*min-height: 500px;*/
+    margin: 10px auto;
+}
+.td70{
+    height: 30%;
+}
+
+.tableform  {
+    border: 1px solid black;
+    border-collapse: collapse;
+
+}
+.tableform td {
+    border: 1px solid black;
+}
+.userabout{
+    vertical-align: top;
+}
+.tableform input, .tableform textarea{
+    width: 100%;
+    /*padding: 0;*/
+    /*margin: 2;*/
+    box-sizing: border-box;
+    border: none;
+}
+.tableform input[type='radio']{
+    width: auto;
+}
+.tableform textarea {
+    resize: none;
+}
