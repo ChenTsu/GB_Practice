@@ -53,10 +53,16 @@
 }
 .menuItems {
     margin-right: 10px;
-    vertical-align: text-top;
+    vertical-align: top;
 }
 .menuItems a{
     display: inline-block;
+    font-family: Lora;
+    color: #241c18;
+    font-size: 18px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 700;
+    text-align: left;
+    text-decoration: none;
 }
 .menuItems .ellipse {
     border-radius: 50%;
@@ -84,7 +90,7 @@
 .headerTitle .white{
 	font-family: Oswald;
 	color: #e4dddb;
-	font-size: 100px; /* Приближение из-за подстановки шрифтов */
+	font-size: 88px; /* Приближение из-за подстановки шрифтов */
 	font-weight: 700;
 	line-height: 78px; /* Приближение из-за подстановки шрифтов */
 	text-align: left;
@@ -92,7 +98,7 @@
 .headerTitle .black {
     font-family: Oswald;
     color: #241b17;
-    font-size: 100px; /* Приближение из-за подстановки шрифтов */
+    font-size: 88px; /* Приближение из-за подстановки шрифтов */
     font-weight: 700;
     line-height: 78px; /* Приближение из-за подстановки шрифтов */
     text-align: left;
