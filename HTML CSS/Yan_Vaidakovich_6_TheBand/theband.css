@@ -1,38 +1,38 @@
 @font-face {
-    font-family: "Lora";
+    font-family: Lora;
 	src: url("fonts/Lora-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
-    font-family: "Lora";
+    font-family: Lora;
 	src: url("fonts/Lora-Italic.ttf") format("truetype");
     font-weight: normal;
     font-style: italic;
 }
 @font-face {
-    font-family: "Lora";
+    font-family: Lora;
 	src: url("fonts/Lora-Bold.ttf") format("truetype");
     font-weight: bold;
     font-style: normal;
 }
 @font-face {
-    font-family: "Oswald";
+    font-family: Oswald;
 	src: url("fonts/Oswald-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }@font-face {
-    font-family: "Oswald";
+    font-family: Oswald;
 	src: url("fonts/Oswald-Bold.ttf") format("truetype");
     font-weight: bold;
     font-style: normal;
 }@font-face {
-    font-family: "Oswald";
+    font-family: Oswald;
 	src: url("fonts/Oswald-Light.ttf") format("truetype");
     font-weight: lighter;
     font-style: normal;
 }
-
+/**********************************************************************/
 .wrap {
     width: 1900px;
     height: 4820px;
@@ -82,14 +82,22 @@
     left: 1225px;
 }
 .headerTitle .white{
-	font-family: "Oswald";
+	font-family: Oswald;
 	color: #e4dddb;
 	font-size: 100px; /* Приближение из-за подстановки шрифтов */
 	font-weight: 700;
 	line-height: 78px; /* Приближение из-за подстановки шрифтов */
 	text-align: left;
 }
-
+.headerTitle .black {
+    font-family: Oswald;
+    color: #241b17;
+    font-size: 100px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 700;
+    line-height: 78px; /* Приближение из-за подстановки шрифтов */
+    text-align: left;
+}
+/*********************************************************************/
 .about {
 	width: 1900px;
 	height: 1068px;
