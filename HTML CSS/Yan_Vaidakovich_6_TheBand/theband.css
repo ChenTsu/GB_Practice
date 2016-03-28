@@ -36,7 +36,7 @@
 @font-face {
     font-family: Oswald;
     src: url("fonts/Oswald-Light.ttf") format("truetype");
-    font-weight: lighter;
+    font-weight: 100;
     font-style: normal;
 }
 
@@ -75,7 +75,7 @@
 
 .menuItems a {
     display: inline-block;
-    font-family: Lora;
+    font-family: Lora, serif;
     color: #241c18;
     font-size: 18px; /* Приближение из-за подстановки шрифтов */
     font-weight: 700;
@@ -116,7 +116,7 @@
 }
 
 .headerTitle .white {
-    font-family: Oswald;
+    font-family: Oswald, serif;
     color: #e4dddb;
     /*font-size: 100px; !* Приближение из-за подстановки шрифтов *!*/
     /*font-weight: 700;*/
@@ -125,7 +125,7 @@
 }
 
 .headerTitle .black {
-    font-family: Oswald;
+    font-family: Oswald, serif;
     color: #241b17;
     /*font-size: 100px; !* Приближение из-за подстановки шрифтов *!*/
     /*font-weight: 700;*/
@@ -211,7 +211,7 @@
 }
 
 .aboutTitle {
-    font-family: Oswald;
+    font-family: Oswald, sans-serif;
     color: #241b17;
     font-size: 36px; /* Приближение из-за подстановки шрифтов */
     font-weight: 400;
@@ -219,7 +219,7 @@
 }
 
 .aboutContent {
-    font-family: Lora;
+    font-family: Lora, serif;
     color: #241b17;
     font-size: 18px; /* Приближение из-за подстановки шрифтов */
     font-weight: 400;
@@ -239,7 +239,7 @@
     line-height: 1.1em;
     font-size: 100px; /* Приближение из-за подстановки шрифтов */
     font-weight: 700;
-    font-family: Oswald;
+    font-family: Oswald, sans-serif;
 }
 
 .artistName span {
@@ -284,7 +284,7 @@
     margin-left: 120px;
     height: 327px;
     width: 635px;
-    font-family: Oswald;
+    font-family: Oswald, sans-serif;
     color: #241b17;
     line-height: 1em;
     clear: both;
@@ -388,7 +388,7 @@
 }
 
 .nowPlaying {
-    font-family: Oswald;
+    font-family: Oswald, sans-serif;
     color: #241b17;
     font-size: 36px; /* Приближение из-за подстановки шрифтов */
     font-weight: 500;
@@ -397,7 +397,7 @@
 }
 
 .nowPlayingAlbum {
-    font-family: Oswald;
+    font-family: Oswald, sans-serif;
     color: #241b17;
     font-size: 30px; /* Приближение из-за подстановки шрифтов */
     font-weight: 300;
@@ -406,7 +406,7 @@
 }
 
 .nowPlayingSong {
-    font-family: Lora;
+    font-family: Lora, serif;
     color: #826b60;
     font-size: 18px; /* Приближение из-за подстановки шрифтов */
     font-style: italic;
@@ -480,7 +480,7 @@
 /*=========================================================================*/
 .albumSongs {
     margin-top: 107px;
-    font-family: Oswald;
+    font-family: Oswald, sans-serif;
     color: #241b17;
     font-size: 30px; /* Приближение из-за подстановки шрифтов */
     font-weight: 300;
@@ -493,7 +493,7 @@
     border: none;
     width: 636px;
     vertical-align: bottom;
-    font-family: Lora;
+    font-family: Lora, serif;
     color: #826b60;
     font-size: 18px; /* Приближение из-за подстановки шрифтов */
     font-style: italic;
@@ -536,26 +536,127 @@
     background-color: #f1eeed;
     width: 1900px;
     height: 964px;
+    margin: 0 auto;
 }
-.concertRght{
+.toursTitle{
+    font-family: Oswald, sans-serif;
+    color: #241b17;
+    font-size: 36px; /* Approximation due to font substitution */
+    font-weight: 400;
+    /*line-height: 78px; !* Approximation due to font substitution *!*/
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 81px;
+}
+.concertsTimeLine{
+    width: 859px;
+    height: 346px;
+    margin: 0 auto;
+}
+.concertsBar{
+    background: url('img/tourLine.png') center no-repeat;
+}
+.concertsBar div{
+    border-radius: 50%;
+    background-color: #826b60;
+    width: 14px;
+    height: 14px;
+    float: left;
+    margin-left: 46px;
+}
+.concertsBar div:first-child{
+    margin-left: 69px;
+}
+
+.concertsBar .pastBar{
+    background-color: #e4dddb;
+}
+.concertsBar .todayBar{
+    background-color: #241c18;
+    margin-left: 66px;
+    margin-right: 66px;
+}
+.concertsBar .futureBar{}
+
+.concertsArrows{
+    width: 859px;
+    height: 47px;
+    margin: 0 auto;
+    outline: 1px solid slateblue;
+    /*background-color: slateblue;*/
+    position: relative;
+    top: -400px;
+}
+.concertsLeft{
+    width: 25px;
+    height: 47px;
+    background-image: url('img/tourLeftArrow.png');
+    float: left;
+}
+.concertsRight{
+    width: 25px;
+    height: 47px;
+    background-image: url('img/tourLeftArrow.png');
     -moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
+    float: right;
+}
+.concertsRight:hover, .concertsLeft:hover{
+    background-color: #f8f8f8;
 }
 
+.concertsList {
+    /*width: 859px;*/
+    /*height: 346px;*/
+    height: 733px;
+    width: 298px;
+    /*width: 733px;*/
+    /*height: 298px;*/
+    text-align: right;
+    position: relative;
+    top: 100px;
+    font-family: Lora, serif;
+    color: #e4dddb;
+    font-size: 16px; /* Approximation due to font substitution */
+    font-weight: 700;
+    /*line-height: 78px; !* Approximation due to font substitution *!*/
+    /*-webkit-writing-mode: vertical-rl;*/
+    /*writing-mode:tb-rl;*/
+    /*transform: rotate(-90deg); !* width and height properties ommitted due to transform *!*/
+    /*-webkit-transform: rotate(-90deg);*/
+}
+.concertsList p{
+    /*margin: 27px 0;*/
+}
+.concertsList p:first-child{
+    margin-top: 0;
+}
+.concertsList p:last-child{
+    margin-bottom: 0;
+}
+.concertsList .past{}
+.concertsList .today{
+    color: #241c18;
+    margin: 48px 0;
+}
+.concertsList .future{
+    color: #826b60;
+}
 /******************************************************************************/
 .contact {
-    background-color: #a4938b;
+    background: #917c73 url("img/contactsFoto.png") center bottom no-repeat;
     width: 1900px;
     height: 964px;
     padding-top: 175px;
     text-align: center;
+
 }
 .contactTell{
     width: 776px;
     height: 265px;
-    font-family: Oswald;
+    font-family: Oswald, sans-serif;
     color: #241b17;
     font-size: 80px; /* Приближение из-за подстановки шрифтов */
     font-weight: 700;
@@ -565,7 +666,7 @@
     padding-bottom: 36px;*/
 }
 .contactTell p:nth-child(2){
-    font-family: Oswald;
+    font-family: Oswald, sans-serif;
     color: #e4dddb;
     font-size: 72px; /* Приближение из-за подстановки шрифтов */
     font-weight: 700;
@@ -599,7 +700,7 @@
     float: left;
 }
 .socialLine .subscribe div{
-    font-family: Oswald;
+    font-family: Oswald, sans-serif;
     color: #e4dddb;
     font-size: 36px; /* Приближение из-за подстановки шрифтов */
     font-weight: 700;
@@ -632,7 +733,7 @@
     margin-left: 32px;
 }
 .contact .bottomLinks{
-    font-family: Lora;
+    font-family: Lora, serif;
     color: #e4dddb;
     font-size: 18px; /* Приближение из-за подстановки шрифтов */
     font-weight: 700;
@@ -656,7 +757,7 @@
 
 .bottomMenu .menuItems a {
     display: inline-block;
-    font-family: Lora;
+    font-family: Lora, serif;
     /*color: #241c18;*/
     font-size: 18px; /* Приближение из-за подстановки шрифтов */
     font-weight: 700;
