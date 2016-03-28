@@ -1,37 +1,51 @@
 @font-face {
     font-family: Lora;
-	src: url("fonts/Lora-Regular.ttf") format("truetype");
+    src: url("fonts/Lora-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
+
 @font-face {
     font-family: Lora;
-	src: url("fonts/Lora-Italic.ttf") format("truetype");
+    src: url("fonts/Lora-Italic.ttf") format("truetype");
     font-weight: normal;
     font-style: italic;
 }
+
 @font-face {
     font-family: Lora;
-	src: url("fonts/Lora-Bold.ttf") format("truetype");
+    src: url("fonts/Lora-Bold.ttf") format("truetype");
     font-weight: bold;
     font-style: normal;
 }
+
 @font-face {
     font-family: Oswald;
-	src: url("fonts/Oswald-Regular.ttf") format("truetype");
+    src: url("fonts/Oswald-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
-}@font-face {
+}
+
+@font-face {
     font-family: Oswald;
-	src: url("fonts/Oswald-Bold.ttf") format("truetype");
+    src: url("fonts/Oswald-Bold.ttf") format("truetype");
     font-weight: bold;
     font-style: normal;
-}@font-face {
+}
+
+@font-face {
     font-family: Oswald;
-	src: url("fonts/Oswald-Light.ttf") format("truetype");
+    src: url("fonts/Oswald-Light.ttf") format("truetype");
     font-weight: lighter;
     font-style: normal;
 }
+
+/**********************************************************************/
+* {
+    margin: 0;
+    padding: 0;
+}
+
 /**********************************************************************/
 .wrap {
     width: 1900px;
@@ -39,23 +53,27 @@
     margin: 0 auto;
     position: absolute;
 }
+
 .header {
     width: 1900px;
-    height: 924px;/* -40px padding*/
+    height: 924px; /* -40px padding*/
     background: #ffffff url("img/Guitar%20Photo.png") no-repeat;
     padding-top: 40px;
 }
+
 .menu {
     width: 443px;
-    height: 34px;
+    /*height: 34px;*/
     margin-left: 205px;
     margin-top: 40px; /* +padding.header = отступ для меню*/
 }
+
 .menuItems {
-    margin-right: 10px;
+    /*margin-right: 10px;*/
     vertical-align: top;
 }
-.menuItems a{
+
+.menuItems a {
     display: inline-block;
     font-family: Lora;
     color: #241c18;
@@ -64,48 +82,597 @@
     text-align: left;
     text-decoration: none;
 }
+
 .menuItems .ellipse {
     border-radius: 50%;
     background-color: #826860;
     width: 6px;
     height: 6px;
     display: inline-block;
+    margin: 5px 5px;
 }
+
 .backgroundWords {
     width: 377px;
     height: 549px;
     background-image: url("img/Background%20words.png");
     position: relative;
-    top: 191px;
+    top: 65px;
     left: 1256px;
     z-index: 2;
 }
+
 .headerTitle {
-    width: 387px;
-    height: 197px;
+    width: 400px;
+    height: 250px;
     position: relative;
-    top: 381px;
-    left: 1225px;
+    top: -296px;
+    left: 1215px;
+    z-index: 3;
+    text-align: center;
+    font-size: 100px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 700;
+    line-height: 95px; /* Приближение из-за подстановки шрифтов */
 }
-.headerTitle .white{
-	font-family: Oswald;
-	color: #e4dddb;
-	font-size: 88px; /* Приближение из-за подстановки шрифтов */
-	font-weight: 700;
-	line-height: 78px; /* Приближение из-за подстановки шрифтов */
-	text-align: left;
+
+.headerTitle .white {
+    font-family: Oswald;
+    color: #e4dddb;
+    /*font-size: 100px; !* Приближение из-за подстановки шрифтов *!*/
+    /*font-weight: 700;*/
+    /*line-height: 78px; !* Приближение из-за подстановки шрифтов *!*/
+    /*text-align: left;*/
 }
+
 .headerTitle .black {
     font-family: Oswald;
     color: #241b17;
-    font-size: 88px; /* Приближение из-за подстановки шрифтов */
+    /*font-size: 100px; !* Приближение из-за подстановки шрифтов *!*/
+    /*font-weight: 700;*/
+    /*line-height: 78px; !* Приближение из-за подстановки шрифтов *!*/
+    /*text-align: left;*/
+}
+
+/*********************************************************************/
+.about {
+    width: 1900px;
+    height: 964px;
+    /*height: 1068px;*/
+    /*top: -103px;*/
+    background-color: #EFEAE7;
+    /*background-color: #826b60;*/
+    /*position: absolute;*/
+
+}
+
+.artistFoto {
+    background: url("img/ArtistSheard.png") no-repeat;
+    width: 647px;
+    height: 783px;
+    position: relative;
+    left: 265px;
+    bottom: -181px;
+}
+
+.aboutArrows {
+    /*top: 1401px;*/
+    /*left: 204px;*/
+    width: 1491px;
+    height: 91px;
+    position: relative;
+    z-index: 3;
+    top: -346px;
+    left: 204px;
+
+}
+
+.leftArrow {
+    float: left;
+    background: url("img/left%20arrow.png") no-repeat;
+    width: 50px;
+    height: 91px;
+}
+
+.leftArrow:hover {
+    background-color: #dFdAd7;
+    cursor: pointer;
+}
+
+.rightArrow {
+    width: 50px;
+    height: 91px;
+    background: url("img/right%20arrow.png") no-repeat;
+    float: right;
+}
+
+.rightArrow:hover {
+    background-color: #dFdAd7;
+    cursor: pointer;
+}
+
+.members {
+    width: 174px;
+    height: 243px;
+    position: relative;
+    top: -192px;
+    left: 991px;
+    background: url("img/Band%20members.png") no-repeat;
+}
+
+.aboutText {
+    width: 438px;
+    height: 296px;
+    /*background: #555;*/
+    position: relative;
+    z-index: 2;
+    top: -131px;
+    left: 857px;
+    text-align: center;
+}
+
+.aboutTitle {
+    font-family: Oswald;
+    color: #241b17;
+    font-size: 36px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 400;
+    line-height: 78px; /* Приближение из-за подстановки шрифтов */
+}
+
+.aboutContent {
+    font-family: Lora;
+    color: #241b17;
+    font-size: 18px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 400;
+    line-height: 36px; /* Приближение из-за подстановки шрифтов */
+    text-align: left;
+}
+
+.artistName {
+    width: 313px;
+    height: 200px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    /*top: -197px;*/
+    top: -338px;
+    left: 379px;
+    line-height: 1.1em;
+    font-size: 100px; /* Приближение из-за подстановки шрифтов */
     font-weight: 700;
+    font-family: Oswald;
+}
+
+.artistName span {
+    display: inline-block;
+}
+
+.artistName span:first-child {
+    color: #826b60;
+    text-align: left;
+}
+
+.artistName span:last-child {
+    color: #241b17;
+    text-align: left;
+}
+
+/**********************************************************************/
+.music {
+    background-color: #f8f8f8;
+    width: 1900px;
+    height: 862px; /*  -102px padding*/
+    padding-top: 102px;
+    clear: both;
+}
+
+.discography {
+    width: 826px;
+    height: 733px;
+    float: left;
+    margin-left: 84px;
+    margin-right: 150px;
+}
+
+.cover {
+    width: 826px;
+    height: 346px;
+    background: url("img/Cover%20Image.png");
+}
+
+.albums {
+    margin-top: 60px;
+    margin-left: 120px;
+    height: 327px;
+    width: 635px;
+    font-family: Oswald;
+    color: #241b17;
+    line-height: 1em;
+    clear: both;
+}
+
+.albums > span {
+    width: 170px;
+    height: 39px;
+    font-size: 36px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 500;
+    text-align: left;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.albums table {
+    width: 635px;
+    vertical-align: bottom;
+    border-spacing: 0 34px;
+    /*border-collapse: collapse;*/
+}
+
+.albumsList {
+    height: 37px;
+    font-size: 30px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 300;
+    margin-top: 45px;
+}
+
+.albumsList td {
+    /*border: 1px solid saddlebrown;*/
+    /*border-top: 17px solid #f8f8f8;*/
+    /*border-bottom: 17px solid #f8f8f8;*/
+}
+
+.albumName {
+    width: 290px;
+}
+
+.albumName + td {
+    width: 54px;
+    vertical-align: middle;
+}
+
+.albumsList .albumDivider {
+    border-radius: 50%;
+    background-color: #e4dddb;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.albumYear {
+    width: 115px;
+    /*height: 25px;*/
+    text-align: left;
+}
+
+.albumListen > span, .albumBuy > span {
+    font-size: 18px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 400;
+    /*vertical-align: middle;*/
+    /*display: inline-block;*/
+}
+
+.albums .albumsList .albumListen {
+    background-color: #e4dddb;
+    color: #826b60;
+    width: 80px;
+    text-align: center;
+    /*height: 28px; !* 36px.height-2*4px.padding*!*/
+    /*padding-bottom: 4px 0; !* (36px.height-28px.height.Span)/2 *!*/
+    /*vertical-align: middle;*/
+    /*border-top: 9px solid #f8f8f8;*/
+    /*border-bottom: 9px solid #f8f8f8;*/
+
+}
+
+.albums .albumsList .helper {
+    width: 30px;
+}
+
+.albums .albumsList .albumBuy {
+    background-color: #826b60;
+    color: #f8f8f8;
+    width: 80px;
+    /*height: 28px; !* 36px.height-2*4px.padding*!*/
+    /*padding: 4px 0; !* (36px.height-28px.height.Span)/2 *!*/
+    text-align: center;
+    /*border-top: 9px solid #f8f8f8;*/
+    /*border-bottom: 9px solid #f8f8f8;*/
+    /*vertical-align: middle;*/
+}
+
+.player {
+    margin-left: 29px;
+    float: left;
+    width: 636px;
+    height: 706px;
+}
+
+.nowPlaying {
+    font-family: Oswald;
+    color: #241b17;
+    font-size: 36px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 500;
+    /*line-height: 78px; !* Приближение из-за подстановки шрифтов *!*/
+    text-align: left;
+}
+
+.nowPlayingAlbum {
+    font-family: Oswald;
+    color: #241b17;
+    font-size: 30px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 300;
     line-height: 78px; /* Приближение из-за подстановки шрифтов */
     text-align: left;
 }
-/*********************************************************************/
-.about {
-	width: 1900px;
-	height: 1068px;
-	top: -103px;
+
+.nowPlayingSong {
+    font-family: Lora;
+    color: #826b60;
+    font-size: 18px; /* Приближение из-за подстановки шрифтов */
+    font-style: italic;
+    line-height: 36px; /* Приближение из-за подстановки шрифтов */
+    text-align: left;
+    margin-bottom: 43px;
+}
+
+.playerControls {
+    width: 636px;
+    height: 101px;
+    text-align: center;
+}
+
+.playerControls .playerButtons {
+    width: 339px;
+    height: 45px;
+    /*clear: both;*/
+    margin: 0 auto;
+}
+
+.playerControls .rewind {
+    width: 62px;
+    height: 38px;
+    background: url("img/Rewind.png");
+    float: left;
+}
+
+.playerControls .pause {
+    width: 32px;
+    height: 45px;
+    background-image: url(img/Pause.png);
+    margin: 0 90px;
+    float: left;
+}
+
+.playerControls .forward {
+    width: 62px;
+    height: 38px;
+    background-image: url("img/Forward.png");
+    float: right;
+}
+
+/*=======================================================================*/
+.nowPlaying .playerProgressBar input[type=range] {
+    -webkit-appearance: none;
+    width: 634px;
+    height: 8px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    background-color: #e4dddb;
+}
+
+.nowPlaying .playerProgressBar input[type=range]:focus {
+    outline: none;
+}
+
+.nowPlayingSong .playerProgressBar input[type=range]::-webkit-slider-runnable-track {
+    cursor: pointer;
+}
+
+.nowPlayingSong .playerProgressBar input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 15px;
+    cursor: pointer;
+    border: 1px solid #e4dddb;
+}
+
+/*=========================================================================*/
+.albumSongs {
+    margin-top: 107px;
+    font-family: Oswald;
+    color: #241b17;
+    font-size: 30px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 300;
+    /*line-height: 78px; !* Приближение из-за подстановки шрифтов *!*/
+    text-align: left;
+}
+
+.albumSongs table {
+    border-collapse: collapse;
+    border: none;
+    width: 636px;
+    vertical-align: bottom;
+    font-family: Lora;
+    color: #826b60;
+    font-size: 18px; /* Приближение из-за подстановки шрифтов */
+    font-style: italic;
+    text-align: left;
+    margin-top: 33px;
+
+}
+
+.albumSongs table tr {
+    height: 30px;
+}
+
+.albumSongs table td:first-child div {
+    border: 8px solid transparent;
+    border-left: 8px solid #e4dddb;;
+    width: 26px;
+}
+
+.albumSongs tr:first-child td:first-child div {
+    border: 8px solid transparent;
+    border-left: 8px solid #826b60;
+}
+
+.albumSongs table td:nth-child(2) {
+    width: 380px;
+}
+
+.albumSongs table td:nth-child(3) {
+    width: 190px;
+    border-bottom: 1px dotted #826b60;
+}
+
+.albumSongs table td:last-child {
+    padding-left: 28px;
+    text-align: right;
+}
+
+/******************************************************************************/
+.tours {
+    background-color: #f1eeed;
+    width: 1900px;
+    height: 964px;
+}
+.concertRght{
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+/******************************************************************************/
+.contact {
+    background-color: #a4938b;
+    width: 1900px;
+    height: 964px;
+    padding-top: 175px;
+    text-align: center;
+}
+.contactTell{
+    width: 776px;
+    height: 265px;
+    font-family: Oswald;
+    color: #241b17;
+    font-size: 80px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 700;
+    /*line-height: 78px; !* Приближение из-за подстановки шрифтов *!*/
+    margin: 0 auto;
+/*    border-bottom: 2px dotted #e4dddb;
+    padding-bottom: 36px;*/
+}
+.contactTell p:nth-child(2){
+    font-family: Oswald;
+    color: #e4dddb;
+    font-size: 72px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 700;
+    /*line-height: 78px; !* Приближение из-за подстановки шрифтов *!*/
+    /*text-align: left;*/
+}
+.contactTell .dottedLine{
+     /*width: 776px;*/
+     height: 2px;
+     background-image: url("img/Dotted%20line.png");
+     margin-top: 36px;
+ }
+.socialLine{
+    width: 717px;
+    height: 59px;
+    clear: both;
+    /*vertical-align: bottom;*/
+    margin: 43px auto 0;
+}
+.socialLine .subscribe{
+    border: 6px solid #241c18;
+    background-color: #241c18;
+    width: 204px;   /*  -padding */
+    height: 42px;   /*  -padding */
+
+    /*line-height: 78px; !* Приближение из-за подстановки шрифтов *!*/
+    text-align: center;
+    vertical-align: middle;
+    /*padding: 10px;*/
+    /*padding-bottom: 10px;*/
+    float: left;
+}
+.socialLine .subscribe div{
+    font-family: Oswald;
+    color: #e4dddb;
+    font-size: 36px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 700;
+    width: 165px;
+    height: 34px;
+    display: inline-block;
+    line-height: 42px;
+    vertical-align: middle;
+    margin-bottom: 10px;
+}
+.socialLine input[type=text]{
+    border: 6px solid #241c18;
+    width: 292px;
+    height: 42px;
+    float: left;
+    font-size: 36px;
+}
+.socialLine .facebook{
+    background-image: url("img/facebook.png");
+    width: 33px;
+    height: 59px;
+    float: left;
+    margin-left: 62px;
+}
+.socialLine .youtube{
+    background-image: url("img/youtube.png");
+    width: 61px;
+    height: 59px;
+    float: left;
+    margin-left: 32px;
+}
+.contact .bottomLinks{
+    font-family: Lora;
+    color: #e4dddb;
+    font-size: 18px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 700;
+    /*line-height: 78px; !* Приближение из-за подстановки шрифтов *!*/
+    text-align: left;
+    width: 1487px;
+    height: 16px;
+    margin: 402px auto 0;
+}
+.copyright{
+    float: left;
+}
+.bottomMenu{
+    float: right;
+}
+
+.bottomMenu .menuItems {
+    /*margin-right: 10px;*/
+    vertical-align: top;
+}
+
+.bottomMenu .menuItems a {
+    display: inline-block;
+    font-family: Lora;
+    /*color: #241c18;*/
+    font-size: 18px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 700;
+    text-align: right;
+    text-decoration: none;
+}
+
+.bottomMenu .menuItems .ellipse {
+    border-radius: 50%;
+    background-color: #826860;
+    width: 6px;
+    height: 6px;
+    display: inline-block;
+    margin: 5px 5px;
+}
+.bottomMenu img {
+    float: right;
+    margin-right: 10px;
 }
