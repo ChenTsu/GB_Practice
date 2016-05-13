@@ -1,0 +1,77 @@
+html,body {
+    margin: 0;
+    padding: 0;
+}
+
+.wrap {
+    margin: 0 auto;
+    width: 600px;
+}
+
+.header {
+    height: 240px;
+
+    /*width: 100%;*/
+}
+.header .header-logo{
+    background: url("img/comm_103-header.jpg") no-repeat;
+    height: 150px;
+    margin-bottom: 15px;
+}
+.header .header-menu {
+    height: 90px;
+}
+.header .header-menu table{
+    background: #131919;
+    /*border: 1px solid white;*/
+    border-collapse: collapse;
+    color: #ffffff;
+    height: 62px;
+    margin: 0 auto;
+    text-align: center;
+    width: 570px;
+}
+.header .header-menu table td{
+    border: 1px solid white;
+    height: 20px;
+}
+.header-menu .header-menu-newsletter-title{
+    width: 50%;
+}
+
+.header-menu .header-menu-date{
+    width: 50%;
+}
+.header-menu .header-menu-issue{
+    background: #566167;
+    text-transform: uppercase;
+}
+.header-menu .header-menu-links td{
+    width: 17%;
+}
+.header-menu .header-menu-links a{
+    color: white;
+    text-transform: lowercase;
+}
+
+.container {
+    padding: 0 15px;
+}
+.container .title{
+    background: linear-gradient(to top, #aeb2b5, #555658);
+    height: 25px;
+    margin: 0 auto 10px;
+    width: 570px;
+}
+.container .main-article .main-article-image{
+    background: url("img/img.jpg") no-repeat;
+    float: left;
+    height: 150px;
+    margin-left: 10px;
+    width: 100px;
+}
+.container .main-article .main-article-left {
+    float: left;
+    margin-left: 10px;
+    width: 265px;
+}
