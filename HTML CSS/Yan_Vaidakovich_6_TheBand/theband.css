@@ -65,7 +65,7 @@
     width: 443px;
     /*height: 34px;*/
     margin-left: 205px;
-    margin-top: 40px; /* +padding.header = отступ для меню*/
+    margin-top: 35px; /* +padding.header = отступ для меню*/
 }
 
 .menuItems {
@@ -555,6 +555,8 @@
 }
 .concertsBar{
     background: url('img/tourLine.png') center no-repeat;
+    width: 858px;
+    height: 2px;
 }
 .concertsBar div{
     border-radius: 50%;
@@ -562,10 +564,11 @@
     width: 14px;
     height: 14px;
     float: left;
-    margin-left: 46px;
+    margin-left: 51px;
+    margin-top: -6px;
 }
 .concertsBar div:first-child{
-    margin-left: 69px;
+    margin-left: 48px;
 }
 
 .concertsBar .pastBar{
@@ -574,7 +577,7 @@
 .concertsBar .todayBar{
     background-color: #241c18;
     margin-left: 66px;
-    margin-right: 66px;
+    margin-right: 20px;
 }
 .concertsBar .futureBar{}
 
@@ -585,7 +588,7 @@
     outline: 1px solid slateblue;
     /*background-color: slateblue;*/
     position: relative;
-    top: -400px;
+    top: -598px;
 }
 .concertsLeft{
     width: 25px;
@@ -616,7 +619,8 @@
     /*height: 298px;*/
     text-align: right;
     position: relative;
-    top: 100px;
+    top: -180px;
+    left: 333px;
     font-family: Lora, serif;
     color: #e4dddb;
     font-size: 16px; /* Approximation due to font substitution */
@@ -624,7 +628,7 @@
     /*line-height: 78px; !* Approximation due to font substitution *!*/
     /*-webkit-writing-mode: vertical-rl;*/
     /*writing-mode:tb-rl;*/
-    /*transform: rotate(-90deg); !* width and height properties ommitted due to transform *!*/
+    transform: rotate(-90deg); /* width and height properties ommitted due to transform */
     /*-webkit-transform: rotate(-90deg);*/
 }
 .concertsList p{
