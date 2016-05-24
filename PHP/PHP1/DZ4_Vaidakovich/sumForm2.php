@@ -12,30 +12,27 @@ $result ='';
 
 require 'sum.php';
 
+$requestMethod = "_{$_SERVER['REQUEST_METHOD']}";
 
-$method = "_{$_SERVER['REQUEST_METHOD']}";
-
-if (isset(${$method}['x']) && isset(${$method}['y']) && isset(${$method}['operation']))
+if (isset(${$requestMethod}['x']) && isset(${$requestMethod}['y']) && isset(${$requestMethod}['operation']))
 {
     $firstTime = false;
-    if ( ( ${$method}['x'] !== '') && (${$method}['y'] !== '') )
+    if ( ( ${$requestMethod}['x'] !== '') && (${$requestMethod}['y'] !== '') )
     {
-        $result = mathOperation( ${$method}['x'], ${$method}['y'], ${$method}["operation"] );
+        $result = mathOperation( ${$requestMethod}['x'], ${$requestMethod}['y'], ${$requestMethod}["operation"] );
 //        var_dump($_POST['operation']);
     }
 else
     $result = "Введите значения и выберите операцию.";
 
-//    var_dump($firstTime);
-//    var_dump(${"\$_{$_SERVER['REQUEST_METHOD']}"});
-//    var_dump($_SERVER);
+    if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
+        header('location:'.${$requestMethod}['PHP_SELF'] . '?x='.${$requestMethod}['x'] . '&y=' . ${$requestMethod}['y'] . '&operation=' . ${$requestMethod}['operation']); // то что нужно, но всё равно не понятно,
 
-//    header('location:'.$_SERVER['HTTP_REFERER'] . '?x='.$_POST['x'] . '&y=' . $_POST['y'] . '&operation=' . $_POST['operation']); // этот запрос нам не подходит т.к. происходит наращивание параметров
-//    header('location:'.${$method}['PHP_SELF'] . '?x='.${$method}['x'] . '&y=' . ${$method}['y'] . '&operation=' . ${$method}['operation']); // то что нужно, но всё равно не понятно
+//    header('location:'.$_SERVER['HTTP_REFERER'] . '?x='.$_POST['x'] . '&y=' . $_POST['y'] . '&operation=' . $_POST['operation']); // REFERER нам не подходит т.к. происходит наращивание параметров
 }
 
-$method = "_{$_SERVER['REQUEST_METHOD']}";
-var_dump($method);
+$requestMethod = "_{$_SERVER['REQUEST_METHOD']}";
+//var_dump($method);
 ?>
 
 <html>
@@ -47,21 +44,21 @@ var_dump($method);
 <h1>Калькулятор с кнопками выбора действия, и сохранением введённых данных.</h1>
 
 <form method="post">
-    <input type="text" name="x" value="<?php !$firstTime ? print ( ${$method}['x'] ) : false; ?>" />
+    <input type="text" name="x" value="<?php !$firstTime ? print ( ${$requestMethod}['x'] ) : false; ?>" />
 
     <?php
-    if ( isset( $$method ) )
+    if ( isset( $$requestMethod ) )
     {
-        var_dump(${$method}['operation']);
-        var_dump($firstTime);
-        (!$firstTime && (${$method}['operation']  == 'ADD') ) ? print '+' : false;
-        (!$firstTime && (${$method}['operation']  === 'SUB') ) ? print '-' : false;
-        (!$firstTime && (${$method}['operation']  == 'MUL') ) ? print '*' : false;
-        (!$firstTime && (${$method}['operation']  == 'DIV') ) ? print '/' : false;
+//        var_dump(${$method}['operation']);
+//        var_dump($firstTime);
+        (!$firstTime && (${$requestMethod}['operation']  == 'ADD') ) ? print '+' : false;
+        (!$firstTime && (${$requestMethod}['operation']  == 'SUB') ) ? print '-' : false;
+        (!$firstTime && (${$requestMethod}['operation']  == 'MUL') ) ? print '*' : false;
+        (!$firstTime && (${$requestMethod}['operation']  == 'DIV') ) ? print '/' : false;
     }
     ?>
 
-    <input type="text" name="y" value="<?php !$firstTime ? print ${$method}['y'] : false; ?>"/>
+    <input type="text" name="y" value="<?php !$firstTime ? print ${$requestMethod}['y'] : false; ?>"/>
     <?php echo " = " . $result . "<br>\n";
     ?>
     <button type="submit" name="operation" value="ADD">+</button>
@@ -69,13 +66,5 @@ var_dump($method);
     <button type="submit" name="operation" value="MUL">*</button>
     <button type="submit" name="operation" value="DIV">/</button>
 </form>
-<?php
-
-
-//if ( !$firstTime )
-//{
-////    header('location:'.$_SERVER['HTTP_REFERER'] . '?x='.$_POST['x'] . '&y=' . $_POST['y']);
-//}
-?>
 </body>
 </html>
