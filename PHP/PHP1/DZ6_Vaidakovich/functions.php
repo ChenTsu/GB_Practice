@@ -6,27 +6,41 @@
  * Time: 18:14
  */
 
-function resizeImage($file){
+/** function resizeImage - do small copy of image with new name basename($image_name) .'_'. $new_width.'x'.$new_height;
+ * @param $uploaded_file - $_FILES['image']
+ * @param string $preview_folder - where save result
+ * @param int $new_width
+ * @param int $new_height
+ * @param string $canvas_color
+ * @param int $zoom_crop
+ * @return bool
+ */
+function resizeImage($uploaded_file, $preview_folder='preview/', $new_width = 150, $new_height = 0, $canvas_color='', $zoom_crop = 1 )
+{
+//    нафиг ограничивать размер картинки именно в функции смотри ниже ))
+    define ('MAX_WIDTH', 3000);//max image width
+    define ('MAX_HEIGHT', 3000);//max image height
+    define ('MAX_FILE_SIZE', 3,145728e+7); // changed to 30 MiB
 
-    define ('MAX_WIDTH', 1500);//max image width
-    define ('MAX_HEIGHT', 1500);//max image height
-    define ('MAX_FILE_SIZE', 10485760);
+    //image save path
+//    $path = 'storeResize/';
+    // will use $preview_dst
 
-    //iamge save path
-    $path = 'storeResize/';
+    // create preview dir if need
+    if ( !is_dir($preview_folder) )
+        mkdir( $preview_folder);
 
-    //size of the resize image
-    $new_width = 128;
-    $new_height = 128;
+
+
+
+    $image_type = $uploaded_file['type'];
+    $image_size = $uploaded_file['size'];
+    $image_error = $uploaded_file['error'];
+    $image_file = $uploaded_file['tmp_name'];
+    $image_name = $uploaded_file['name'];
 
     //name of the new image
-    $nameOfFile = 'resize_'.$new_width.'x'.$new_height.'_'.basename($file['name']);
-
-    $image_type = $file['type'];
-    $image_size = $file['size'];
-    $image_error = $file['error'];
-    $image_file = $file['tmp_name'];
-    $image_name = $file['name'];
+    $nameOfFile = basename($image_name) .'_'. $new_width.'x'.$new_height;
 
     $image_info = getimagesize($image_file);
 
@@ -39,6 +53,8 @@ function resizeImage($file){
     }
     else{
         //set error invalid file type
+        // если это не картинка то что мы вообще тут делаем
+        return false;
     }
 
     if ($image_error){
@@ -49,19 +65,23 @@ function resizeImage($file){
         //set error image size invalid
     }
 
+    // если встречаем нужный тип файла создаём новое изображение - копию исходного
     switch ($image_info['mime']) {
         case 'image/jpg': //This isn't a valid mime type so we should probably remove it
         case 'image/jpeg':
-            $image = imagecreatefromjpeg ($image_file);
+            $new_image = imagecreatefromjpeg ($image_file);
             break;
         case 'image/png':
-            $image = imagecreatefrompng ($image_file);
+            $new_image = imagecreatefrompng ($image_file);
             break;
         case 'image/gif':
-            $image = imagecreatefromgif ($image_file);
+            $new_image = imagecreatefromgif ($image_file);
             break;
+        default: // не картинка, сделаем выход из функции
+            return false;
     }
 
+    // странный if ну да фиг с ним, типа зацита
     if ($new_width == 0 && $new_height == 0) {
         $new_width = 100;
         $new_height = 100;
@@ -72,10 +92,10 @@ function resizeImage($file){
     $new_height = min ($new_height, MAX_HEIGHT);
 
     //get original image h/w
-    $width = imagesx ($image);
-    $height = imagesy ($image);
+    $width = imagesx ($new_image);
+    $height = imagesy ($new_image);
 
-    //$align = 'b';
+    $align = 'b';
     $zoom_crop = 1;
     $origin_x = 0;
     $origin_y = 0;
@@ -106,13 +126,14 @@ function resizeImage($file){
     imagealphablending ($canvas, false);
 
 
+
     if (strlen ($canvas_color) < 6) {
         $canvas_color = 'ffffff';
     }
 
     $canvas_color_R = hexdec (substr ($canvas_color, 0, 2));
     $canvas_color_G = hexdec (substr ($canvas_color, 2, 2));
-    $canvas_color_B = hexdec (substr ($canvas_color, 2, 2));
+    $canvas_color_B = hexdec (substr ($canvas_color, 4, 2));
 
     // Create a new transparent color for image
     $color = imagecolorallocatealpha ($canvas, $canvas_color_R, $canvas_color_G, $canvas_color_B, 127);
@@ -177,26 +198,158 @@ function resizeImage($file){
         }
 
         // positional cropping!
-        imagecopyresampled ($canvas, $image, $origin_x, $origin_y, $src_x, $src_y, $new_width, $new_height, $src_w, $src_h);
+        imagecopyresampled ($canvas, $new_image, $origin_x, $origin_y, $src_x, $src_y, $new_width, $new_height, $src_w, $src_h);
 
     } else {
-        imagecopyresampled ($canvas, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
+        imagecopyresampled ($canvas, $new_image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
     }
     //Straight from Wordpress core code. Reduces filesize by up to 70% for PNG's
-    if ( (IMAGETYPE_PNG == $image_info[2] || IMAGETYPE_GIF == $image_info[2]) && function_exists('imageistruecolor') && !imageistruecolor( $image ) && imagecolortransparent( $image ) > 0 ){
-        imagetruecolortopalette( $canvas, false, imagecolorstotal( $image ) );
+    if ( (IMAGETYPE_PNG == $image_info[2] || IMAGETYPE_GIF == $image_info[2]) && function_exists('imageistruecolor') && !imageistruecolor( $new_image ) && imagecolortransparent( $new_image ) > 0 ){
+        imagetruecolortopalette( $canvas, false, imagecolorstotal( $new_image ) );
     }
     $quality = 100;
-    $nameOfFile = 'resize_'.$new_width.'x'.$new_height.'_'.basename($file['name']);
+//    $nameOfFile = 'resize_'.$new_width.'x'.$new_height.'_'.basename($uploaded_file['name']);
 
     if (preg_match('/^image\/(?:jpg|jpeg)$/i', $image_info['mime'])){
-        imagejpeg($canvas, $path.$nameOfFile, $quality);
+        imagejpeg($canvas, $preview_folder.$nameOfFile, $quality);
 
     } else if (preg_match('/^image\/png$/i', $image_info['mime'])){
-        imagepng($canvas, $path.$nameOfFile, floor($quality * 0.09));
+        imagepng($canvas, $preview_folder.$nameOfFile, floor($quality * 0.09));
 
     } else if (preg_match('/^image\/gif$/i', $image_info['mime'])){
-        imagegif($canvas, $path.$nameOfFile);
+        imagegif($canvas, $preview_folder.$nameOfFile);
 
     }
+
+    ImageDestroy($new_image);
+    return true;
+}
+
+/***********************************************
+ * if (!$max_width) $max_width = 1000;
+ * if (!$max_height) $max_height = 1000;
+ * $size = GetImageSize($image);
+ * $width = $size[0];
+ * $height = $size[1];
+ * $x_ratio = $max_width / $width;
+ * $y_ratio = $max_height / $height;
+ * if ( ($width <= $max_width) && ($height <= $max_height) ) {
+ * $tn_width = $width;
+ * $tn_height = $height;
+ * }
+ * else if (($x_ratio * $height) < $max_height) {
+ * $tn_height = ceil($x_ratio * $height);
+ * $tn_width = $max_width;
+ * }
+ * else {
+ * $tn_width = ceil($y_ratio * $width);
+ * $tn_height = $max_height;
+ * }
+ * $src = ImageCreateFromJpeg($image);
+ * $dst = ImageCreate($tn_width,$tn_height);
+ * ImageCopyResized($dst, $src, 0, 0, 0, 0,$tn_width,$tn_height,$width,$height);
+ * header('Content-type: image/jpeg');
+ * ImageJpeg($dst, null, -1);
+ * ImageDestroy($src);
+ * ImageDestroy($dst);
+ ************************************************/
+
+
+/**
+ * @param $file
+ * @param int $width
+ * @param int $height
+ * @param bool $proportional
+ * @param string $output
+ * @param bool $delete_original
+ * @param bool $use_linux_commands
+ * @return bool
+ */
+function smart_resize_image($file,
+                            $width              = 0,
+                            $height             = 0,
+                            $proportional       = false,
+                            $output             = 'file',
+                            $delete_original    = false,
+                            $use_linux_commands = false ) {
+
+    if ( $height <= 0 && $width <= 0 ) return false;
+    # Setting defaults and meta
+    $info                         = getimagesize($file);
+    $image                        = '';
+    $final_width                  = 0;
+    $final_height                 = 0;
+    list($width_old, $height_old) = $info;
+    # Calculating proportionality
+    if ($proportional) {
+        if      ($width  == 0 )  $factor = $height/$height_old;
+        elseif  ($height == 0 )  $factor = $width/$width_old;
+        else                    $factor = min( $width / $width_old, $height / $height_old );
+        $final_width  = round( $width_old * $factor );
+        $final_height = round( $height_old * $factor );
+    }
+    else {
+        $final_width = ( $width <= 0 ) ? $width_old : $width;
+        $final_height = ( $height <= 0 ) ? $height_old : $height;
+    }
+    # Loading image to memory according to type
+    switch ( $info[2] ) {
+        case IMAGETYPE_GIF:   $image = imagecreatefromgif($file);   break;
+        case IMAGETYPE_JPEG:  $image = imagecreatefromjpeg($file);  break;
+        case IMAGETYPE_PNG:   $image = imagecreatefrompng($file);   break;
+        default: return false;
+    }
+
+
+    # This is the resizing/resampling/transparency-preserving magic
+    $image_resized = imagecreatetruecolor( $final_width, $final_height );
+    if ( ($info[2] == IMAGETYPE_GIF) || ($info[2] == IMAGETYPE_PNG) ) {
+        $transparency = imagecolortransparent($image);
+        if ($transparency >= 0) {
+//            $transparent_color  = imagecolorsforindex($image, $trnprt_indx);
+//            $transparency       = imagecolorallocate($image_resized, $trnprt_color['red'], $trnprt_color['green'], $trnprt_color['blue']);
+        $transparent_color  = imagecolorsforindex($image, $transparency);
+        $transparency       = imagecolorallocate($image_resized, $transparent_color['red'], $transparent_color['green'], $transparent_color['blue']);
+            imagefill($image_resized, 0, 0, $transparency);
+            imagecolortransparent($image_resized, $transparency);
+        }
+        elseif ($info[2] == IMAGETYPE_PNG) {
+            imagealphablending($image_resized, false);
+            $color = imagecolorallocatealpha($image_resized, 0, 0, 0, 127);
+            imagefill($image_resized, 0, 0, $color);
+            imagesavealpha($image_resized, true);
+        }
+    }
+    imagecopyresampled($image_resized, $image, 0, 0, 0, 0, $final_width, $final_height, $width_old, $height_old);
+
+    # Taking care of original, if needed
+    if ( $delete_original ) {
+        if ( $use_linux_commands ) exec('rm '.$file);
+        else @unlink($file);
+    }
+    # Preparing a method of providing result
+    switch ( strtolower($output) ) {
+        case 'browser':
+            $mime = image_type_to_mime_type($info[2]);
+            header("Content-type: $mime");
+            $output = NULL;
+            break;
+        case 'file':
+            $output = $file;
+            break;
+        case 'return':
+            return $image_resized;
+            break;
+        default:
+            break;
+    }
+
+    # Writing image according to type to the output destination
+    switch ( $info[2] ) {
+        case IMAGETYPE_GIF:   imagegif($image_resized, $output);    break;
+        case IMAGETYPE_JPEG:  imagejpeg($image_resized, $output);   break;
+        case IMAGETYPE_PNG:   imagepng($image_resized, $output);    break;
+        default: return false;
+    }
+    return true;
 }

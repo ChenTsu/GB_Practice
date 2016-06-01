@@ -74,9 +74,9 @@ if (isset($_SESSION['username'])) //есть имя значит мы залог
         if (isset($_POST['remember'])) {
             setcookie("username", $_POST['username'], time() + TIME_WEEK);
         }
-        if ( !is_dir("images/{$_SESSION['username']}") )
+        if ( !is_dir("images/{$_SESSION['username']}/preview") )
         {
-            mkdir( "images/{$_SESSION['username']}");
+            mkdir( "images/{$_SESSION['username']}/preview", 0777, true);
 //            chmod( "images/{$_SESSION['username']}", 0752 );
         }
 
