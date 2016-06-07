@@ -23,6 +23,7 @@
 error_reporting(E_ALL);
 
 mb_internal_encoding('utf8');
+setlocale( LC_ALL, 'utf-8');
 session_start();
 
 require 'functions.php';
@@ -59,11 +60,13 @@ foreach (scandir($uploaded_file_path, SCANDIR_SORT_NONE ) as $dir_files) {
     else
     {
         //if ( is_file( "$uploaded_file_path/preview/{$dir_files}" ))
-            $gallery_content .= "<div class=\"image_preview\" >
-                                    <a href=\"$uploaded_file_path/$dir_files\" target=\"_blank\" title=\"$dir_files\">
-                                        <img src=\"$uploaded_file_path/preview/{$dir_files}\">
-                                    {$dir_files}</a>
-                                    </div>";
+            $gallery_content .= <<<HTML
+    <div class="image_preview" >
+        <a href="$uploaded_file_path/$dir_files" target="_blank" title="$dir_files">
+            <img src="$uploaded_file_path/preview/{$dir_files}">
+        {$dir_files}</a>
+    </div>
+HTML;
         /*else
         {
             smart_resize_image("{$uploaded_file_path}/{$dir_files}", 150, 150, true, "$uploaded_file_path/preview/{$dir_files}");
@@ -73,60 +76,62 @@ foreach (scandir($uploaded_file_path, SCANDIR_SORT_NONE ) as $dir_files) {
                                     {$dir_files}</a>
                                  </div>";
         }*/
-
     }
-
-
 }
+if ( $gallery_content==='')
+    $gallery_content = "Вы пока не загрузили файлы";
 
+// обработка формы
 //var_dump($_FILES);echo "<br><hr>";
-if (isset($_FILES['image_file'])) {
-    $uploaded_files= $_FILES['image_file'];
-    var_dump($uploaded_files);echo "<br><hr>";
-
-    // пропускаем файлы размер которых нам не понравился
-    if ($uploaded_files['size'] > MAX_FILE_SIZE)
+if (isset($_FILES['image_file'])) // если добавили файл
+{
+    if ( $_FILES['image_file']['error'] === 0 ) // ошибок нет значит файл загрузился на сервер и с ним можно работать
     {
-        unlink($uploaded_files['tmp_name']);
-        $_SESSION['max_file_size'] = true;
+        $uploaded_files = $_FILES['image_file'];
+        var_dump($uploaded_files);
+        echo "<br><hr>";
+
+        // не обрабатываем файлы размер которых нам не понравился и удаляем их
+        if ($uploaded_files['size'] > MAX_FILE_SIZE) {
+            unlink($uploaded_files['tmp_name']);
+            $_SESSION['max_file_size'] = true;
 //        var_dump($_SESSION['max_file_size']);
-        unset( $_FILES['image_file'] );
-        header("location: index.php");
-        die();
-    }
-    // если похоже на картинку то обрабатываем
-    if ($uploaded_files['type'] == 'image/jpeg' OR $uploaded_files['type'] == 'image/pjpeg' OR
-        $uploaded_files['type'] == 'image/bmp' OR $uploaded_files['type'] == 'image/x-windows-bmp' OR
-        $uploaded_files['type'] == 'image/gif' OR $uploaded_files['type'] == 'image/png'
-    ) {
+            unset($_FILES);
+            header("location: index.php");
+            die();
+        }
+        // если похоже на картинку то обрабатываем
+        if ($uploaded_files['type'] == 'image/jpeg' OR $uploaded_files['type'] == 'image/pjpeg' OR
+            $uploaded_files['type'] == 'image/bmp' OR $uploaded_files['type'] == 'image/x-windows-bmp' OR
+            $uploaded_files['type'] == 'image/gif' OR $uploaded_files['type'] == 'image/png'
+        ) {
+            $img_title = $uploaded_files['name'];
+            $uploaded_file_path = "images/{$_SESSION['username']}/{$img_title}";
 
-        $img_title = $uploaded_files['name'];
-        $uploaded_file_path = "images/{$_SESSION['username']}/{$img_title}";
-        // stupid windows create files in cp-1251
-        $uploaded_file_path = iconv('windows-1251', 'utf-8', $uploaded_file_path);
-
-        // такого файла ещё нет
-        if ( !is_file($uploaded_file_path) )
-        {
-            // переместили в папку пользователя
-            if (move_uploaded_file($uploaded_files['tmp_name'], $uploaded_file_path))
-            {   //  вызывать создание превью
-                smart_resize_image($uploaded_file_path, 150, 150, true, "images/{$_SESSION['username']}/preview/" . basename($uploaded_file_path));
-                $img_preview = "images/{$_SESSION['username']}/preview/" . basename($uploaded_file_path);
-                $gallery_content .= "<div class=\"image_preview\" >
+            if (!is_file($uploaded_file_path))// такого файла ещё нет
+                {
+                //if (move_uploaded_file($uploaded_files['tmp_name'], iconv( "utf-8", "windows-1251", $uploaded_file_path )))// переместили в папку пользователя успешно // используем iconv т.к. походу php в/или виндовс (или я хз что ещё) не поддерживает utf-8
+                if (move_uploaded_file($uploaded_files['tmp_name'], $uploaded_file_path ))// переместили в папку пользователя успешно
+                {   //  вызывать создание превью
+                    smart_resize_image($uploaded_file_path, 150, 150, true, "images/{$_SESSION['username']}/preview/$img_title");
+                    //формируем контент
+                    $img_preview = "images/{$_SESSION['username']}/preview/$img_title";
+                    $gallery_content .= "<div class=\"image_preview\" >
                                     <a href=\"$uploaded_file_path\" target=\"_blank\" title=\"$img_title\">
                                         <img src=\"$img_preview\">
                                     $img_title</a>
                                  </div>";
+                }
             }
         }
-
-    } else    // не картинка - убиваем чтоб не раздувал /tmp сервака
-    {
-        unlink($uploaded_files['tmp_name']);
+        else    // не картинка - убиваем чтоб не раздувал /tmp сервака
+        {
+            unlink($uploaded_files['tmp_name']);
+        }
     }
-
-    unset($_FILES['image_file']);
+    unset($_FILES);
+    header("location: index.php"); // чтобы сбросить форму и избавиться от POST-запроса
+    die();
 }
 
 
@@ -152,7 +157,14 @@ if (isset($_FILES['image_file'])) {
         <input type="file" name="image_file">
         <button type="submit" name="add_file">Добавить</button>
     </form>
-    <div class="auth"><a href="auth.php?action=logout">Выход</a></div>
+    <hr>
+    <div class="auth">
+        <form action="auth.php" method="post">
+            <input type="hidden" name="action" value="logout"/>
+            <button type="submit" >Выход</button>
+        </form>
+<!--        <a href="auth.php?action=logout">Выход</a>-->
+    </div>
 
 </div>
 <div class="footer"></div>

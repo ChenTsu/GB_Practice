@@ -13,7 +13,7 @@ session_start();
 
 define('TIME_WEEK', 60 * 60 * 24 * 7);
 
-define('FORM_LOGIN', <<<LOGIN
+define('FORM_LOGIN', <<<HTML
 <!doctype html>
     <html lang="ru">
     <head>
@@ -30,9 +30,9 @@ define('FORM_LOGIN', <<<LOGIN
     </form>
     </body>
     </html>
-LOGIN
+HTML
 );
-define('FORM_LOGOUT', <<<LOGOUT
+define('FORM_LOGOUT', <<<HTML
 <!doctype html>
     <html lang="ru">
     <head>
@@ -48,7 +48,7 @@ define('FORM_LOGOUT', <<<LOGOUT
     </form>
     </body>
     </html>
-LOGOUT
+HTML
 );  // если у нас heredoc внутри скобок, то закрывающие скобки и символ завершения команды пишем на новой строке, а закрывающая метка heredoc должна быть без ';'
 
 
@@ -57,7 +57,7 @@ if (isset($_SESSION['username'])) //есть имя значит мы залог
     if (isset($_POST['action']) || isset($_GET['action'])) {
         if ($_POST['action'] == 'logout' || $_GET['action'] == 'logout') {
             if (!isset($_COOKIE['username'])) {
-                setcookie("username", $_SESSION['username'], false);
+                setcookie("username", $_SESSION['username'], time()-600); // установив срока действия кук в прошлое - браузер удаляет куки сразу, если поставить время жизни куки в 0, то удалятся будет при закрытии браузера
             }
             unset($_SESSION['username']);
             session_destroy();
