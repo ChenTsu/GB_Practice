@@ -13,12 +13,17 @@ function add_new_user ( $username, $userpassword, $user_first_name='NULL', $user
     global $db_link;
     $query = "INSERT INTO `users` (`id`, `user`, `user_pass`, `first_name`, `last_name`, `middle_name`) VALUES ('', '{$username}', '{$userpassword}', '{$user_first_name}', '{$user_last_name}', '{$user_middle_name}')";
     $result = mysqli_query($db_link,$query);
+    $id = mysqli_insert_id($db_link);
 
+    if ( $result )
     return false;
 }
 
 function get_user_by_name( $username )
 {
+    global $db_link;
+    $query = "SELECT * FROM `users` WHERE `user` = {$username}";
+
     return false;
 }
 
