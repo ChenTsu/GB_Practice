@@ -24,13 +24,14 @@ else
 
 if ( isset ($_POST['action']) ) {
     if ($_POST['action'] === 'delete') {
-        $realty = delete_realty($db_link, $id);
+        $realty = delete_realty($db_link, $_POST['realty_id']);
         if ( $realty )
         {
             header("Location: index.php");
             die();
         }
-        $realty = ERROR_DELETE_REALTY;
+        else
+            $realty = ERROR_DELETE_REALTY;
     }
 }
 else

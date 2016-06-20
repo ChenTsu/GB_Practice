@@ -36,7 +36,7 @@ function get_realty_by_id ($db_link, $realty_id)
 function get_all_realty ($db_link)
 {
     $all_realty = array();
-    $query = "SELECT `id`, (SELECT `title` FROM `objects` WHERE `objects`.`id`=`realty`.`id`) AS `object`, `address`, `square`, `price`, `additional`, `agent`, `description`, `category` FROM `realty`;";
+    $query = "SELECT `id`, (SELECT `title` FROM `objects` WHERE `objects`.`id`=`realty`.`object`) AS `object`, `address`, `square`, `price`, `additional`, `agent`, `description`, `category` FROM `realty`;";
     if ( $result = mysqli_query($db_link, $query))
     {
         while ( $row = mysqli_fetch_assoc( $result ) )
@@ -65,7 +65,7 @@ function edit_realty( $db_link, $realty_id, $object_id, $address, $square, $pric
 
 function delete_realty ( $db_link, $realty_id)
 {
-    $query = "DELETE FROM `realty` WHERE `objects`.`id` = {$realty_id} LIMIT 1;";
+    $query = "DELETE FROM `realty` WHERE `realty`.`id` = {$realty_id} LIMIT 1;";
     if ( $result = mysqli_query($db_link,$query) )
     {
         return true;

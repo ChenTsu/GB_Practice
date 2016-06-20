@@ -13,6 +13,6 @@ require_once "models/realty.model.php";
 
 session_start();
 
-$realty = get_all_objects($db_link);
+$objects = get_all_objects($db_link);
 
 include "views/object-list.view.php";

@@ -54,7 +54,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php">Недвижимость v0.2</a>
+            <a class="navbar-brand" href="index.php">PHP 2 Урок 1-2 Недвижимость v0.2</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -108,7 +108,12 @@
                         <p><?= $realty['category'] ?></p>
                         <hr/>
                         <h3>Подтверждение</h3>
-                        <a class="btn btn-danger" href="delete.php?id=<?= $realty['id'] ?>"><i class="fa fa-check"></i> Удалить</a>
+                        <form action="" method="post">
+                            <input type="hidden" name="action" value="delete">
+                            <input type="hidden" name="realty_id" value="<?= $realty['id'] ?>">
+                            <button type="submit" class="btn btn-danger"><i class="fa fa-check"></i> Удалить</button>
+                        </form>
+<!--                        <a class="btn btn-danger" href="delete.php?id=--><?//= $realty['id'] ?><!--"> Удалить</a>-->
                         <a class="btn btn-primary" href="index.php">Отмена</a>
                         <?php
                     }

@@ -1,22 +1,25 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: chentsu
- * Date: 19.06.2016
- * Time: 21:07
+ * User: Vaidakovich
+ * Date: 20.06.2016
+ * Time: 9:47
  */
+
 ?>
 
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Добавление объекта</title>
+    <title>Добавление недвижимости</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -82,23 +85,63 @@
             <div class="row">
                 <div class="col-lg-12">
                     <?php
-                    if ( $objects === ERROR_ADD_OBJECT )
+                    if ( $realty === ERROR_ADD_REALTY )
                     {
                         echo '<h1 class="page-header">Ошибка добавления записи!</h1>';
                     }
-                    elseif ( $objects )
+                    elseif ( $realty )
                     {
-                        ?>
-                    <h1 class="page-header">Добавление типа недвижимости</h1>
+                    ?>
+                    <h1 class="page-header">Добавление объекта недвижимости</h1>
                     <form action="" method="post">
                         <input type="hidden" name="action" value="add"/>
+                        <div class="form-group input-group" style="width: 100%">
+                            <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                            <select class="form-control" name="object_id">
+                                 <?php
+                                 foreach($objects as $a_type) {
+                                     echo "<option value=\"{$a_type['id']}\">{$a_type['title']}</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
                         <div class="form-group input-group">
-                            <span class="input-group-addon"><i class="fa fa-th-list"></i></span>
-                            <input type="text" placeholder="Тип недвижимости" class="form-control" name="object_title" required
+                            <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                            <input type="text" placeholder="Адрес" class="form-control" name="address" required
                                    value="">
                         </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="fa fa-th-large"></i></span>
+                            <input type="text" placeholder="Площадь м.кв." class="form-control" name="square" required
+                                   value="">
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                            <input type="text" placeholder="Стоимость" class="form-control" name="price" required
+                                   value="">
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="fa fa-file-text-o "></i></span>
+                            <input type="text" placeholder="Дополнительно" class="form-control" name="additional"
+                                   value="">
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="fa fa-phone "></i></span>
+                            <input type="text" placeholder="Контактное лицо" class="form-control" name="agent" required
+                                   value="">
+                        </div>
+                        <div class="form-group input-group">
+                            <label for="description">Описание</label>
+                                    <textarea class="form-control" name="description" id="description"> </textarea>
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+                            <input type="text" placeholder="Категория" class="form-control" name="category"
+                                   value="">
+                        </div>
+
                         <button class="btn btn-success" type="submit"><i class="fa fa-check"></i> Сохранить</button>
-                        <a class="btn btn-primary" href="types.php">Отмена</a>
+                        <a class="btn btn-primary" href="index.php">Отмена</a>
                     </form>
                     <?php
                     }
@@ -132,3 +175,4 @@
 </body>
 
 </html>
+

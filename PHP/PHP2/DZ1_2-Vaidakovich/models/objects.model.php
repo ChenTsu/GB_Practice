@@ -10,6 +10,10 @@ require_once "db.php";
 
 define('ERROR_SQL_INSERT', 'ERROR_SQL_INSERT');
 define('ERROR_SQL_UPDATE', 'ERROR_SQL_UPDATE');
+define('ERROR_SQL_DELETE', 'ERROR_SQL_DELETE');
+define('ERROR_SQL_DELETE_CONSTRAINT', 'ERROR_SQL_DELETE_CONSTRAINT');
+
+
 
 function new_object ($db_link, $object_title)
 {
@@ -36,12 +40,17 @@ function edit_object ($db_link, $object_id, $object_title)
 function delete_object ($db_link, $object_id)
 {
     $query = "DELETE FROM `objects` WHERE `objects`.`id` = {$object_id} LIMIT 1;";
-    if ( $result = mysqli_query($db_link,$query) )
+    mysqli_query($db_link,$query);
+    $result = mysqli_errno( $db_link );
+    if ( $result == 1451  )
     {
-        return true;
+        return ERROR_SQL_DELETE_CONSTRAINT;
+//        return $result;
     }
+    elseif ( $result )
+        return ERROR_SQL_DELETE;
     else
-        return ERROR_SQL_UPDATE;
+        return true;
 }
 
 function get_object_by_id ( $db_link, $object_id )

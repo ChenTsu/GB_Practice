@@ -12,6 +12,8 @@ require_once "models/objects.model.php";
 require_once "models/realty.model.php";
 session_start();
 define("ERROR_DELETE_OBJECT",'ERROR_DELETE_OBJECT');
+define('ERROR_DELETE_OBJECT_CONSTRAINT', 'ERROR_DELETE_OBJECT_CONSTRAINT');
+
 
 if ( isset($_GET['id']))
 {
@@ -25,12 +27,18 @@ else
 if ( isset ($_POST['action']) ) {
     if ($_POST['action'] === 'delete') {
         $objects = delete_object($db_link, $_POST['object_id']);
-        if ( $objects )
+
+        if ( $objects === ERROR_SQL_DELETE_CONSTRAINT )
+            $objects = ERROR_DELETE_OBJECT_CONSTRAINT;
+        elseif ( $objects === ERROR_SQL_DELETE )
+        {
+//            $objects = ERROR_DELETE_OBJECT;
+        }
+        else
         {
             header("Location: types.php");
             die();
         }
-        $objects = ERROR_DELETE_OBJECT;
     }
 }
 else

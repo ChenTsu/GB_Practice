@@ -88,10 +88,10 @@
                     <?php
 
                     // вывод данных тут
-                    if (count($realty)>0)
+                    if (count($objects)>0)
                     {
                     ?>
-                    <a href="add.php" class="btn btn-success col-lg-offset-10" ><i class="fa fa-plus-circle"></i> Добавить</a>
+                    <a href="types-add.php" class="btn btn-success col-lg-offset-10" ><i class="fa fa-plus-circle"></i> Добавить</a>
 
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -109,7 +109,7 @@
                                     </thead>
                                     <tbody>
                                     <?php
-                                    foreach ($realty as $item) {
+                                    foreach ($objects as $item) {
                                         ?>
                                         <tr>
                                             <td><?= $item['id'] ?></td>

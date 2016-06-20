@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="6e238209-b351-49a7-963a-87f39776790a" name="minzurkapetri" url="http://minzurkapetri.h1n.ru/">
+        <fileTransfer host="149.202.210.177" port="21" username="s8e6f670">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
