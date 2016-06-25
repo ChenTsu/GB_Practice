@@ -6,20 +6,17 @@
  * Time: 17:04
  */
 
-define('ERROR_ADD_OBJECT','ERROR_ADD_OBJECT');
-define("ERROR_DELETE_OBJECT",'ERROR_DELETE_OBJECT');
-define('ERROR_DELETE_OBJECT_CONSTRAINT', 'ERROR_DELETE_OBJECT_CONSTRAINT');
-define('ERROR_EDIT_OBJECT','ERROR_EDIT_OBJECT');
-
 function realty_type_list()
 {
     $objects = get_all_realty_types();
 
-    include "views/realty_type-list.view.php";
+    echo render(REALTY_TYPES_FILENAME_START.'list', ['objects'=>$objects]);
+//    include "views/realty_type-list.view.php";
 }
 
 function realty_type_add ()
 {
+//    $objects = array();
     if ( isset($_POST['action']) )
     {
         if ( $_POST['action'] === 'add' )
@@ -27,7 +24,7 @@ function realty_type_add ()
             $objects = new_realty_type( $_POST['object_title']);
             if ( $objects )
             {
-                header("Location: types.php");
+                header("Location: index.php?cat=realty_type");
                 die();
             }
             else
@@ -35,7 +32,8 @@ function realty_type_add ()
         }
     }
 
-    include "views/realty_type-add.view.php";
+    echo render(REALTY_TYPES_FILENAME_START.'add', ['objects'=>$objects]);
+//    include "views/realty_type-add.view.php";
 }
 
 function realty_type_delete()
@@ -61,7 +59,7 @@ function realty_type_delete()
             }
             else
             {
-                header("Location: types.php");
+                header("Location: index.php?cat=realty_type");
                 die();
             }
         }
@@ -69,7 +67,8 @@ function realty_type_delete()
     else
         $objects = get_realty_type_by_id( $id);
 
-    include "views/realty_type-delete.view.php";
+    echo render( REALTY_TYPES_FILENAME_START.'delete',['objects'=>$objects]);
+//    include "views/realty_type-delete.view.php";
 }
 
 function realty_type_edit ()
@@ -90,7 +89,7 @@ function realty_type_edit ()
             $objects = edit_realty_type($_POST['object_id'], $_POST['object_title'] );
             if ( $objects )
             {
-                header("Location: types.php");
+                header("Location: index.php?cat=realty_type");
                 die();
             }
             else
@@ -100,5 +99,6 @@ function realty_type_edit ()
     else
         $objects = get_realty_type_by_id( $id);
 
-    include "views/realty_type-edit.view.php";
+    echo render( REALTY_TYPES_FILENAME_START.'edit', ['objects'=>$objects]);
+//    include "views/realty_type-edit.view.php";
 }

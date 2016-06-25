@@ -7,7 +7,7 @@
  */
 
 $db_link = mysqli_connect("localhost", "eajakzes_realty", "C6I0r2zT", "eajakzes_immovable");
-
+//$db_link = mysqli_connect("localhost", "root", "2k4p", "eajakzes_immovable");
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();

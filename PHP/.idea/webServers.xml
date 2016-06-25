@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="ab9bfe5b-4fa5-400e-aae7-7c9626855af5" name="minzurkapetri" url="http://minzurkapetri.h1n.ru/">
-        <fileTransfer host="149.202.210.177" port="21" username="s8e6f670">
+        <fileTransfer host="149.202.210.177" port="21" password="dfe9df9cdfe3df9adfd8df98dfd0dffe" username="s8e6f670">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

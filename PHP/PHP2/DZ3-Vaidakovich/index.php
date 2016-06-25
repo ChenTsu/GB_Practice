@@ -15,6 +15,7 @@
  */
 
 error_reporting(E_ALL);
+require_once "models/settings.php";
 require_once "models/db.php";
 require_once "models/realty_type-model.php";
 require_once "models/realty-model.php";

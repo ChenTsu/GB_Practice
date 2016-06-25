@@ -6,13 +6,6 @@
  * Time: 14:11
  */
 
-define('ERROR_ADD_REALTY','ERROR_ADD_REALTY');
-define('ERROR_EDIT_REALTY','ERROR_EDIT_REALTY');
-define("ERROR_DELETE_REALTY",'ERROR_DELETE_REALTY');
-
-define("REALTY_FILENAME_START", "realty-");
-define("REALTY_TYPES_FILENAME_START", "realty_type-");
-
 function realty_add ()
 {
     if ( isset($_POST['action']) )
@@ -34,7 +27,8 @@ function realty_add ()
 
     $objects = get_all_realty_types();
 
-    include "views/realty-add.view.php";
+    echo render(REALTY_FILENAME_START.'add', ['realty'=>$realty, 'objects'=>$objects]);
+//    include "views/realty-add.view.php";
 }
 
 function realty_edit ()
@@ -67,7 +61,8 @@ function realty_edit ()
 
     $objects = get_all_realty_types();
 
-    include "views/realty-edit.view.php";
+    echo render( REALTY_FILENAME_START . 'edit', ['realty' => $realty, 'objects'=>$objects]);
+//    include "views/realty-edit.view.php";
 }
 
 function realty_show ()
@@ -83,7 +78,8 @@ function realty_show ()
 
     $realty = get_realty_by_id( $id);
 
-    include "views/realty-show.view.php";
+    echo render( REALTY_FILENAME_START . 'show', ['realty' => $realty] );
+//    include "views/realty-show.view.php";
 }
 
 function realty_delete ()
@@ -112,13 +108,14 @@ function realty_delete ()
     else
         $realty = get_realty_by_id( $id);
 
-    include "views/realty-delete.view.php";
+    echo render( REALTY_FILENAME_START . 'delete', ['realty' => $realty] );
+    //include "views/realty-delete.view.php";
 }
 
 function realty_list()
 {
     $realty = get_all_realty();
 
-//    echo  render( REALTY_FILENAME_START . 'list', $realty);
-    include "views/realty-list.view.php";
+        echo  render( REALTY_FILENAME_START . 'list', ['realty' => $realty] );
+//    include "views/realty-list.view.php";
 }

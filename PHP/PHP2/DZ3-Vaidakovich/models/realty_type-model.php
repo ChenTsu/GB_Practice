@@ -8,12 +8,6 @@
 
 require_once "db.php";
 
-define('ERROR_SQL_INSERT', 'ERROR_SQL_INSERT');
-define('ERROR_SQL_UPDATE', 'ERROR_SQL_UPDATE');
-define('ERROR_SQL_DELETE', 'ERROR_SQL_DELETE');
-define('ERROR_SQL_DELETE_CONSTRAINT', 'ERROR_SQL_DELETE_CONSTRAINT');
-
-
 function new_realty_type ( $type_title)
 {
     global $db_link;
