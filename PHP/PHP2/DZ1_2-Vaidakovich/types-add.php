@@ -28,5 +28,4 @@ if ( isset($_POST['action']) )
     }
 }
 
-$objects = 1;
 include "views/object-add.view.php";

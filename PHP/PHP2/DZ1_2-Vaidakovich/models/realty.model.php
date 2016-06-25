@@ -71,5 +71,5 @@ function delete_realty ( $db_link, $realty_id)
         return true;
     }
     else
-        false;
+        return false;
 }
